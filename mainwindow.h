@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <QSqlQuery>
+
 #include "dbmenager.h"
 
 namespace Ui {
@@ -25,6 +27,9 @@ private slots:
 
 private:
     DBMenager mDBMenager;
+
+    void displaySqlQueryInTable(QSqlQuery &query);
+
     Ui::MainWindow *ui;
 };
 

@@ -46,10 +46,8 @@ std::vector<Order::Parameters> MyDbGroupBox::checkedOrderParameter()
         param.emplace_back(Order::Parameters::ID);
     if(productCheckBox->isChecked())
         param.emplace_back(Order::Parameters::Product);
-    if(orderNumberCodeCheckBox->isChecked())
-        param.emplace_back(Order::Parameters::OrderNumber);
-    if(dateCheckBox->isChecked())
-        param.emplace_back(Order::Parameters::Date);
+    if(userIdCheckBox->isChecked())
+        param.emplace_back(Order::Parameters::UserID);
 
     return param;
 
@@ -80,12 +78,10 @@ void MyDbGroupBox::setUI()
 
     id2CheckBox = new QCheckBox("ID", this);
     productCheckBox = new QCheckBox("Product", this);
-    orderNumberCodeCheckBox = new QCheckBox("Order Number", this);
-    dateCheckBox = new QCheckBox("Date", this);
+    userIdCheckBox = new QCheckBox("User ID", this);
     pOrderLayout->addWidget(id2CheckBox);
     pOrderLayout->addWidget(productCheckBox);
-    pOrderLayout->addWidget(orderNumberCodeCheckBox);
-    pOrderLayout->addWidget(dateCheckBox);
+    pOrderLayout->addWidget(userIdCheckBox);
     pOrderLayout->addStretch(1);
 
     pBoxLayout->addLayout(pUserLayout);

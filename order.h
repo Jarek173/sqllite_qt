@@ -13,8 +13,7 @@ public:
     {
         ID = 1,
         Product = 2,
-        OrderNumber = 3,
-        Date = 4
+        UserID = 3,
     };
 
     Order() = default;
@@ -50,8 +49,7 @@ private:
     inline static const std::map<Parameters, std::string> cParametersNamesMap{
         {Parameters::ID, "ID"},
         {Parameters::Product, "Product"},
-        {Parameters::OrderNumber, "OrderNumber"},
-        {Parameters::Date, "Date"},
+        {Parameters::UserID, "UserID"},
     };
 };
 

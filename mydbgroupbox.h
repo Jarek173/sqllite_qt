@@ -32,8 +32,7 @@ private:
 
     QCheckBox* id2CheckBox;
     QCheckBox* productCheckBox;
-    QCheckBox* orderNumberCodeCheckBox;
-    QCheckBox* dateCheckBox;
+    QCheckBox* userIdCheckBox;
     void setUI();
 
 };

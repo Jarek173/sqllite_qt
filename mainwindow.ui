@@ -20,42 +20,42 @@
       <item>
        <widget class="QPushButton" name="addUserPushButton">
         <property name="text">
-         <string>Dodaj użytkownika</string>
+         <string>Add user</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="createOrderPushButton">
         <property name="text">
-         <string>Dodaj zamówienie</string>
+         <string>Add order</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="getLastOrdersPushButton">
         <property name="text">
-         <string>Pobierz ostatnie zamówienia</string>
+         <string>Get last orders</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="getUserOrdersPushButton">
         <property name="text">
-         <string>Pobierz zamówienia użytkownika</string>
+         <string>Get user orders</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="createOwnCommentPushButton">
         <property name="text">
-         <string>Stwórz własną komende</string>
+         <string>Create own query</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
     <item row="0" column="1">
-     <widget class="QTableView" name="tableView"/>
+     <widget class="QTableWidget" name="tableWidget"/>
     </item>
    </layout>
   </widget>
@@ -70,7 +70,7 @@
    </property>
    <widget class="QMenu" name="menuOpcje">
     <property name="title">
-     <string>Opcje</string>
+     <string>Options</string>
     </property>
     <addaction name="actionDodajUzytkownika"/>
     <addaction name="actionDodajZamowienie"/>
@@ -91,22 +91,37 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionDodajUzytkownika">
    <property name="text">
-    <string>Dodaj użytkownika</string>
+    <string>Add &amp;user</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+U</string>
    </property>
   </action>
   <action name="actionDodajZamowienie">
    <property name="text">
-    <string>Dodaj zamówienie</string>
+    <string>Add &amp;order</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionPobierzOstatnieZamowienia">
    <property name="text">
-    <string>Pobierz ostatnie zamówienia</string>
+    <string>Get &amp;last orders</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
    </property>
   </action>
   <action name="actionPobierzZamowieniaOdUzytkownika">
    <property name="text">
-    <string>Pobierz zamówienia użytkownika</string>
+    <string>Get user o&amp;rders</string>
+   </property>
+   <property name="toolTip">
+    <string>Get user orders</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
    </property>
   </action>
   <action name="actionPobierzZamowieniaZDnia">
@@ -116,7 +131,10 @@
   </action>
   <action name="actionStworzWlasnaKomende">
    <property name="text">
-    <string>Stwórz własną komendę</string>
+    <string>Create own &amp;query</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
  </widget>

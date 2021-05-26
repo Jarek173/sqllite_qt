@@ -9,45 +9,42 @@ DBMenager::DBMenager()
 
 void DBMenager::connect()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/home/jarek/testDB");
+    mDB = QSqlDatabase::addDatabase("QSQLITE");
+    mDB.setDatabaseName("/home/jkwiatkowski/Documents/test.db");
 
-    if(!db.open())
-    {
-        qInfo() << "Could not open connection!";
-        qInfo() << db.lastError().text();
-    }
-    else
-    {
-        qInfo() << "Connected, lets make a query...";
-        QSqlQuery query;
-        QString cmd;
-        cmd = "SELECT * FROM Users";
-        if(!query.exec(cmd))
-        {
-            qInfo() << db.lastError().text();
-            qInfo() << query.lastError().text();
-        }
-        else
-        {
-            qInfo() << "Got query results: " << query.size();
-            while (query.next())
-            {
-                int id = query.value(0).toInt();
-                QString name = query.value(1).toString();
-                qInfo() << id << " " << name << "\n";
-            }
-        }
-    }
+    isDBOpen();
 }
 
-void DBMenager::executeSqlCmd(const std::string& cmd)
+QSqlQuery DBMenager::executeSqlCmd(const std::string& cmd)
 {
+    isDBOpen();
 
+    QSqlQuery query;
+
+    if(!query.exec(QString::fromStdString(cmd)))
+    {
+        qInfo() << mDB.lastError().text();
+        qInfo() << query.lastError().text();
+        throw std::runtime_error(query.lastError().text().toStdString());
+    }
+
+    return query;
 }
 
 void DBMenager::executeSqlCmd(const QSqlQuery& cmd)
 {
 
+}
+
+bool DBMenager::isDBOpen()
+{
+    if(!mDB.open())
+    {
+        qInfo() << "Could not open connection!";
+        qInfo() << mDB.lastError().text();
+        throw std::runtime_error(mDB.lastError().text().toStdString());
+        return false;
+    }
+    return true;
 }
 

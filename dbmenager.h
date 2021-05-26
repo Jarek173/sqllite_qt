@@ -10,9 +10,11 @@ class DBMenager
 public:
     DBMenager();
     void connect();
-    void executeSqlCmd(const std::string& cmd);
+    QSqlQuery executeSqlCmd(const std::string& cmd);
     void executeSqlCmd(const QSqlQuery& cmd);
 private:
+    QSqlDatabase mDB;
+    bool isDBOpen();
 };
 
 #endif // DBMENAGER_H
