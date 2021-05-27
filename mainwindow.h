@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -29,6 +29,8 @@ private:
     DBMenager mDBMenager;
 
     void displaySqlQueryInTable(QSqlQuery &query);
+
+    bool execSqlQuery(const std::string& cmd);
 
     Ui::MainWindow *ui;
 };

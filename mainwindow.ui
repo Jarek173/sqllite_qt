@@ -285,6 +285,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>getUserOrdersPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onGetUserOrders()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>74</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onAddUserAction()</slot>

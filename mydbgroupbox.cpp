@@ -62,7 +62,7 @@ void MyDbGroupBox::setUI()
     QLabel* userLabel = new QLabel("User");
     pUserLayout->addWidget(userLabel);
 
-    idCheckBox = new QCheckBox("ID", this);
+    idCheckBox = new QCheckBox("User ID", this);
     nameCheckBox = new QCheckBox("Name", this);
     lastNameCheckBox = new QCheckBox("Last Name", this);
     postalCodeCheckBox = new QCheckBox("Postal Code", this);
@@ -76,7 +76,7 @@ void MyDbGroupBox::setUI()
     QLabel* orderLabel = new QLabel("Order");
     pOrderLayout->addWidget(orderLabel);
 
-    id2CheckBox = new QCheckBox("ID", this);
+    id2CheckBox = new QCheckBox("Order ID", this);
     productCheckBox = new QCheckBox("Product", this);
     userIdCheckBox = new QCheckBox("User ID", this);
     pOrderLayout->addWidget(id2CheckBox);

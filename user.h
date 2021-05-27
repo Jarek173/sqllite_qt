@@ -37,7 +37,7 @@ public:
     static std::string dbTableName();
 
     //Optional because someone can add next value in Parameters but not in cMemberNamesMap
-    static std::optional<std::string> parameterName(Parameters parameter);
+    static std::optional<std::string> parameterName(Parameters parameter, bool dbTableNamePrefix = true);
 
     /**
      * @brief this method return string of parameters e.g for parameters ID and Name return "Users.ID, Users.Name"
@@ -55,7 +55,7 @@ private:
     std::string mLogin;
 
     inline static const std::map<Parameters, std::string> cParametersNamesMap{
-        {Parameters::ID, "ID"},
+        {Parameters::ID, "UserID"},
         {Parameters::Name, "Name"},
         {Parameters::LastName, "LastName"},
         {Parameters::PostalCode, "PostalCode"},

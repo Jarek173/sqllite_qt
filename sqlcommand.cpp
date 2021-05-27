@@ -23,7 +23,7 @@ std::string SqlCommand::getLastOrders(int numberOfTheLastOrder, const std::vecto
 
     cmd += "\n";
 
-    cmd += " " + cOrderBy + " " + Order::parameterName(Order::Parameters::ID).value_or("") + " " + cAsc + " ;";
+    cmd += " " + cOrderBy + " " + Order::parameterName(Order::Parameters::ID).value_or("") + " " + cAsc + ";";
 
     return cmd;
 }
@@ -39,7 +39,7 @@ std::string SqlCommand::getUserOrders(const std::string &userLogin, const std::v
 
     cmd += "\n";
 
-    cmd += " " + cFrom + Order::dbTableName() + " \n";
+    cmd += " " + cFrom + " " + Order::dbTableName() + " \n";
 
     cmd += cInnerJoin + " " + User::dbTableName() + " " + cOn + " " + Order::parameterName(Order::Parameters::UserID).value_or("") + "=" + User::parameterName(User::Parameters::ID).value_or("");
 
@@ -47,4 +47,31 @@ std::string SqlCommand::getUserOrders(const std::string &userLogin, const std::v
 
     cmd += cWhere + " " + User::parameterName(User::Parameters::Login).value_or("") + " = '" + userLogin + "';";
 
+    return cmd;
+}
+
+std::string SqlCommand::addUser(const User &user)
+{
+    std::string cmd = "";
+
+    cmd += cInsertInto + " " + User::dbTableName() + " (" + User::parameterName(User::Parameters::Name, false).value_or("") + ", ";
+    cmd += User::parameterName(User::Parameters::LastName, false).value_or("") + ", ";
+    cmd += User::parameterName(User::Parameters::PostalCode, false).value_or("") + ", ";
+    cmd += User::parameterName(User::Parameters::Login, false).value_or("") + ")\n";
+
+    cmd += cValues + " ('" + user.getName() + "', '" + user.getLastName() + "', '" + user.getPostalCode() + "', '" + user.getLogin() + "');";
+
+    return cmd;
+}
+
+std::string SqlCommand::addOrder(const Order &order)
+{
+    std::string cmd = "";
+
+     cmd += cInsertInto + " " + Order::dbTableName() + " (" + Order::parameterName(Order::Parameters::UserID, false).value_or("") + ", ";
+     cmd += Order::parameterName(Order::Parameters::Product, false).value_or("") + ")\n";
+
+     cmd += cValues + " ('" + order.getUserID() + "', '" + order.getProduct() + "');";
+
+    return cmd;
 }

@@ -12,3 +12,13 @@ AddNewOrder::~AddNewOrder()
 {
     delete ui;
 }
+
+std::string AddNewOrder::getUserID() const
+{
+    return ui->userIDLineEdit->text().toStdString();
+}
+
+std::string AddNewOrder::getProduct() const
+{
+    return ui->productComboBox->currentText().toStdString();
+}

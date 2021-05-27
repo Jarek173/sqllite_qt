@@ -15,6 +15,12 @@ public:
     explicit AddNewUser(QWidget *parent = 0);
     ~AddNewUser();
 
+
+    std::string getName() const;
+    std::string getLastName() const;
+    std::string getPostalCode() const;
+    std::string getLogin() const;
+
 private:
     Ui::AddNewUser *ui;
 };

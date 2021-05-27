@@ -1,14 +1,14 @@
 #include "order.h"
 
 
-Order::Order(int id, const std::string &product, int orderNumber) : mID(id), mProduct(product), mOrderNumber(orderNumber)
+Order::Order(const std::string& userID, const std::string &product, int orderNumber) : mUserId(userID) , mProduct(product), mOrderNumber(orderNumber)
 {
 
 }
 
-void Order::setID(int id)
+void Order::setUserID(const std::string &id)
 {
-    mID = id;
+    mUserId = id;
 }
 
 void Order::setProduct(const std::string &product)
@@ -21,9 +21,9 @@ void Order::setOrderNumber(int orderNumber)
     mOrderNumber = orderNumber;
 }
 
-int Order::getID() const
+std::string Order::getUserID() const
 {
-    return mID;
+    return mUserId;
 }
 
 std::string Order::getProduct() const
@@ -41,10 +41,14 @@ std::string Order::dbTableName()
     return cDBTableName;
 }
 
-std::optional<std::string> Order::parameterName(Order::Parameters parameter)
+std::optional<std::string> Order::parameterName(Order::Parameters parameter, bool dbTableNamePrefix)
 {
     if(cParametersNamesMap.find(parameter) != cParametersNamesMap.end())
-        return cDBTableName + "." + cParametersNamesMap.at(parameter);
+    {
+        if(dbTableNamePrefix)
+            return cDBTableName + "." + cParametersNamesMap.at(parameter);
+        return cParametersNamesMap.at(parameter);
+    }
     return {};
 }
 

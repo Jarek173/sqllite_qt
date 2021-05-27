@@ -63,10 +63,14 @@ std::string User::dbTableName()
     return cDBTableName;
 }
 
-std::optional<std::string> User::parameterName(User::Parameters parameter)
+std::optional<std::string> User::parameterName(User::Parameters parameter, bool dbTableNamePrefix)
 {
     if(cParametersNamesMap.find(parameter) != cParametersNamesMap.end())
-        return cDBTableName + "." +cParametersNamesMap.at(parameter);
+    {
+        if(dbTableNamePrefix)
+            return cDBTableName + "." +cParametersNamesMap.at(parameter);
+        return cParametersNamesMap.at(parameter);
+    }
     return {};
 }
 

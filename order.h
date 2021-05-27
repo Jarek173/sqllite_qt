@@ -17,20 +17,20 @@ public:
     };
 
     Order() = default;
-    Order(int id, const std::string& product, int orderNumber);
+    Order(const std::string &userID, const std::string& product, int orderNumber);
 
-    void setID(int id);
+    void setUserID(const std::string& id);
     void setProduct(const std::string& product);
     void setOrderNumber(int orderNumber);
 
-    int getID() const;
+    std::string getUserID() const;
     std::string getProduct() const;
     int getOrderNumber() const;
 
     static std::string dbTableName();
 
     //Optional because someone can add next value in Parameters but not in cMemberNamesMap
-    static std::optional<std::string> parameterName(Parameters parameter);
+    static std::optional<std::string> parameterName(Parameters parameter, bool dbTableNamePrefix = true);
 
     /**
      * @brief this method return string of parameters e.g for parameters ID and Name return "Orders.ID, Orders.Product"
@@ -42,12 +42,12 @@ public:
 private:
     inline static const std::string cDBTableName = "Orders";
 
-    int mID;
+    std::string mUserId;
     std::string mProduct;
     int mOrderNumber;
 
     inline static const std::map<Parameters, std::string> cParametersNamesMap{
-        {Parameters::ID, "ID"},
+        {Parameters::ID, "OrderID"},
         {Parameters::Product, "Product"},
         {Parameters::UserID, "UserID"},
     };

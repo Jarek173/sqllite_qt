@@ -15,6 +15,9 @@ public:
     explicit AddNewOrder(QWidget *parent = 0);
     ~AddNewOrder();
 
+    std::string getUserID() const;
+    std::string getProduct() const;
+
 private:
     Ui::AddNewOrder *ui;
 };

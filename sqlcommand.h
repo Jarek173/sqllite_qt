@@ -15,6 +15,9 @@ public:
 
     static std::string getUserOrders(const std::string& userLogin , const std::vector<User::Parameters>& userParameters = std::vector<User::Parameters>() ,
                                       const std::vector<Order::Parameters>& orderParameters = std::vector<Order::Parameters>());
+
+    static std::string addUser(const User& user);
+    static std::string addOrder(const Order& order);
 private:
     inline static const std::string cSelect = "SELECT";
     inline static const std::string cFrom = "FROM";
@@ -26,6 +29,8 @@ private:
     inline static const std::string cTop = "TOP";
     inline static const std::string cLimit = "LIMIT";
     inline static const std::string cWhere = "WHERE";
+    inline static const std::string cInsertInto = "INSERT INTO";
+    inline static const std::string cValues = "VALUES";
 };
 
 #endif // SQGLCOMMAND_H
